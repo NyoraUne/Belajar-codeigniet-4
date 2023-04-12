@@ -26,4 +26,10 @@ class admin extends BaseController
         echo view('admin/index');
         echo view('admin/foot');
     }
+    public function databarang()
+    {
+        echo view('admin/head');
+        echo view('admin/barang');
+        echo view('admin/foot');
+    }
 }

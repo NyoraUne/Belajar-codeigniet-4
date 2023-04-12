@@ -5,13 +5,17 @@
     <title>SB Admin 2 - Blank</title>
 
     <!-- Custom fonts for this template-->
-    <!-- <link href="<?= base_url('assets/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="<?= base_url('assets/') ?>css/all.css" rel="stylesheet" type="text/css"> -->
     <script src="https://kit.fontawesome.com/2d2eae609e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- datatables -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
 
 </head>
 
@@ -59,7 +63,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Barang Dan Jasa:</h6>
-                        <a class="collapse-item" href="buttons.html">Data Barang</a>
+                        <a class="collapse-item" href="<?= base_url('admin/databarang') ?>">Data Barang</a>
                         <a class="collapse-item" href="cards.html">Data Jasa</a>
                     </div>
                 </div>
