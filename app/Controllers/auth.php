@@ -24,13 +24,19 @@ class Auth extends BaseController
     public function login()
     {
         //menampilkan halaman login
+
+        echo view('auth/head');
         return view('auth/login');
+        echo view('auth/foot');
     }
 
     public function register()
     {
         //menampilkan halaman register
-        return view('auth/register');
+
+        echo view('auth/head');
+        echo view('auth/register');
+        echo view('auth/foot');
     }
 
     public function valid_register()
