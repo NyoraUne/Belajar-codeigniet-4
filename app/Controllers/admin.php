@@ -21,6 +21,9 @@ class admin extends BaseController
         if ($this->session->get('role') != 1) {
             return redirect()->to('/teknisi');
         }
-        return view('admin/index');
+
+        echo view('admin/head');
+        echo view('admin/index');
+        echo view('admin/foot');
     }
 }

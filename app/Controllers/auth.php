@@ -104,7 +104,7 @@ class Auth extends BaseController
                     'role' => $user['role']
                 ];
                 $this->session->set($sessLogin);
-                return redirect()->to('/admin');
+                return redirect()->to('admin');
             }
         } else {
             //jika username tidak ditemukan, balikkan ke halaman login
