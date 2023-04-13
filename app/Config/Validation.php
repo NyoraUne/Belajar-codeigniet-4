@@ -65,4 +65,27 @@ class Validation extends BaseConfig
             'matches' => 'Konfirmasi password tidak cocok'
         ]
     ];
+
+    public $tbhdata = [
+        'kategori' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Stok Barang Harus Di Isi',
+            ]
+        ],
+        'nama' => [
+            'rules' => 'required|is_unique[tbarang.nama_barang]',
+            'errors' => [
+                'required' => 'Nama Barang Harus Di Isi',
+                'is_unique' => 'Nama Barang Sudah Ada'
+            ]
+        ],
+        'harga' => [
+            'rules' => 'required|integer',
+            'errors' => [
+                'required' => 'Harga Barang Harus Di Isi',
+                'integer' => 'Harga Barang Harus Numerik'
+            ]
+        ],
+    ];
 }
