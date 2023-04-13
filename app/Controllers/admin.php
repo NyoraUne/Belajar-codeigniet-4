@@ -60,24 +60,30 @@ class admin extends BaseController
         //tangkap data dari form 
         $data = $this->request->getPost();
 
-        //jalankan validasi
-        $this->validation->run($data, 'tbhdata');
 
-        //cek errornya
-        $errors = $this->validation->getErrors();
-
-        //jika ada error kembalikan ke halaman register
-        if ($errors) {
-            session()->setFlashdata('error', $errors);
-            return redirect()->to('/admin/databarang');
-        }
 
         $save = [
+            'id_barang' => $this->request->getVar('id_barang'),
             'nama_barang' => $this->request->getVar('nama_barang'),
             'harga' => $this->request->getVar('harga'),
             'kategori' => $this->request->getVar('kategori')
         ];
-        $datbar->save($save);
+        if ($this->request->getVar('id_barang') == 0) {
+            //jalankan validasi
+            $this->validation->run($data, 'tbhdata');
+
+            //cek errornya
+            $errors = $this->validation->getErrors();
+
+            //jika ada error kembalikan ke halaman register
+            if ($errors) {
+                session()->setFlashdata('error', $errors);
+                return redirect()->to('/admin/databarang');
+            }
+            $datbar->save($save);
+            return redirect()->to('/admin/databarang');
+        }
+        $datbar->update($this->request->getVar('id_barang'), $save);
         return redirect()->to('/admin/databarang');
     }
 }

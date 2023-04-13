@@ -12,11 +12,11 @@
                 </div>
 
                 <div class="card-body">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="table1" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th style="display: none;">id barang</th>
                                 <th>No</th>
+                                <th style="display: none;">id barang</th>
                                 <th>Nama Barang</th>
                                 <th>Harga</th>
                                 <th>Kategori</th>
@@ -27,8 +27,8 @@
                             <?php $i = 1; ?>
                             <?php foreach ($datbar as $a) : ?>
                                 <tr>
-                                    <td style="display: none;"><?= $a->id_barang_jasa; ?></td>
                                     <td><?= $i++; ?></td>
+                                    <td style="display: none;"><?= $a->id_barang_jasa; ?></td>
                                     <td><?= $a->nama_barang; ?></td>
                                     <td><?= $a->harga; ?></td>
                                     <td><?= $a->nama_kategori; ?></td>
@@ -38,8 +38,8 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th style="display: none;">id barang</th>
                                 <th>No</th>
+                                <th style="display: none;">id barang</th>
                                 <th>Nama Barang</th>
                                 <th>Harga</th>
                                 <th>Kategori</th>
@@ -79,13 +79,13 @@
                             <div class="col">
                                 <div class="input-group-sm mb-1">
                                     <label for="exampleInputEmail1" class="form-label">ID Barang</label>
-                                    <input name="id_barang" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
+                                    <input id="id_barang" name="id_barang" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-group-sm mb-1">
                                     <label for="exampleInputPassword1" class="form-label">Nama Barang</label>
-                                    <input name="nama_barang" type="text" class="form-control" id="exampleInputPassword1" value="<?= old('nama_barang'); ?>">
+                                    <input id="nama_barang" name="nama_barang" type="text" class="form-control" id="exampleInputPassword1" value="<?= old('nama_barang'); ?>">
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                             <div class="col">
                                 <div class="input-group-sm mb-1">
                                     <label for="exampleInputEmail1" class="form-label">Harga Barang</label>
-                                    <input name="harga" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= old('harga'); ?>">
+                                    <input id="harga" name="harga" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= old('harga'); ?>">
                                 </div>
                             </div>
                             <div class="col">
@@ -103,7 +103,7 @@
 
                         <label for="exampleInputPassword1" class="form-label">Kategori</label>
                         <div class="input-group mb-3">
-                            <select name="kategori" class="custom-select" id="inputGroupSelect01">
+                            <select name="kategori" id="kategori" class="custom-select" id="inputGroupSelect01">
                                 <?php foreach ($kategori as $a) : ?>
                                     <option value="<?= $a['id_kategori']; ?>"><?= $a['id_kategori']; ?> | <?= $a['nama_kategori']; ?></option>
                                 <?php endforeach; ?>
@@ -121,8 +121,21 @@
     </div>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#table1').DataTable();
         });
+
+
+        var table = document.getElementById('table1');
+
+        for (var i = 1; i < table.rows.length; i++) {
+            table.rows[i].onclick = function() {
+                //rIndex = this.rowIndex;
+                document.getElementById("id_barang").value = this.cells[1].innerHTML;
+                document.getElementById("nama_barang").value = this.cells[2].innerHTML;
+                document.getElementById("harga").value = this.cells[3].innerHTML;
+                document.getElementById("kategori").value = this.cells[4].innerHTML;
+            };
+        }
     </script>
     <!-- card table -->
     <!-- ISI-------------------------------------------------------------------------------- -->
