@@ -88,24 +88,25 @@ class Validation extends BaseConfig
             ]
         ],
     ];
-    public $upddata = [
-        'kategori' => [
+    public $tbhcst = [
+        'nama_costumer' => [
             'rules' => 'required',
             'errors' => [
-                'required' => 'Kategori Barang Harus Di Isi',
+                'required' => 'Nama Costumer Harus Di Isi',
             ]
         ],
-        'nama_barang' => [
-            'rules' => 'required',
+        'no_telp' => [
+            'rules' => 'required|integer|is_unique[costumer.no_telp]',
             'errors' => [
                 'required' => 'Nama Barang Harus Di Isi',
+                'integer' => 'No Telphone Harus Angka',
+                'is_unique' => 'No Telphone Sudah Ada',
             ]
         ],
-        'harga' => [
-            'rules' => 'required|integer',
+        'alamat' => [
+            'rules' => 'required',
             'errors' => [
-                'required' => 'Harga Barang Harus Di Isi',
-                'integer' => 'Harga Barang Harus Angka'
+                'required' => 'Alamat Harus Di Isi',
             ]
         ],
     ];

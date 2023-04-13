@@ -12,11 +12,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>Nama</th>
+                                <th>No Telphone</th>
+                                <th>Alamat</th>
+                                <th>Status</th>
+                                <th>Tgl Bergabung</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,19 +27,19 @@
                                     <td><?= $cst->nama_costumer; ?></td>
                                     <td><?= $cst->no_telp; ?></td>
                                     <td><?= $cst->alamat; ?></td>
-                                    <td><?= $cst->role; ?></td>
+                                    <td><?= $cst->nama; ?></td>
                                     <td><?= $cst->create_at; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>No Telphone</th>
+                                <th>Alamat</th>
+                                <th>Status</th>
+                                <th>Tgl Bergabung</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -51,27 +51,29 @@
                 <div class="card-header">
                     Featured
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group-sm mb-1">
-                                <label for="exampleInputPassword1" class="form-label">Nama Costumer</label>
-                                <input id="nama_barang" name="nama_barang" type="text" class="form-control" id="exampleInputPassword1" value="<?= old('nama_barang'); ?>">
+                <form method="post" action="tbhwcst">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group-sm mb-1">
+                                    <label for="exampleInputPassword1" class="form-label">Nama Costumer</label>
+                                    <input id="nama_costumer" name="nama_costumer" type="text" class="form-control" id="exampleInputPassword1" value="<?= old('nama_barang'); ?>">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group-sm mb-1">
+                                    <label for="exampleInputPassword1" class="form-label">No Telp</label>
+                                    <input id="no_telp" name="no_telp" type="text" class="form-control" id="exampleInputPassword1" value="<?= old('nama_barang'); ?>">
+                                </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="input-group-sm mb-1">
-                                <label for="exampleInputPassword1" class="form-label">No Telp</label>
-                                <input id="nama_barang" name="nama_barang" type="text" class="form-control" id="exampleInputPassword1" value="<?= old('nama_barang'); ?>">
-                            </div>
+                        <div class="input-group-sm mb-1">
+                            <label for="exampleInputPassword1" class="form-label">Alamat</label>
+                            <textarea name="alamat" class="form-control" id="alamat" rows="3"></textarea>
                         </div>
+                        <button type="submit" class="btn btn-primary btn-sm mt-2">Simpan Data</button>
                     </div>
-                    <div class="input-group-sm mb-1">
-                        <label for="exampleInputPassword1" class="form-label">Alamat</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-sm mt-2">Small button</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
