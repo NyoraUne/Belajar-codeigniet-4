@@ -116,7 +116,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    Tambah Hapus Dan Ubah Data Barang
+                    Tambah Data Barang
                 </div>
                 <div class="card-body">
 
@@ -140,23 +140,20 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input-group-sm mb-1">
-                                    <label for="exampleInputEmail1" class="form-label">ID Barang</label>
-                                    <input id="id_barang" name="id_barang" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" readonly>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input-group-sm mb-1">
                                     <label for="exampleInputPassword1" class="form-label">Nama Barang</label>
                                     <input id="nama_barang" name="nama_barang" type="text" class="form-control" id="exampleInputPassword1" value="<?= old('nama_barang'); ?>">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col">
                                 <div class="input-group-sm mb-1">
                                     <label for="exampleInputEmail1" class="form-label">Harga Barang</label>
                                     <input id="harga" name="harga" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= old('harga'); ?>">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+
                             </div>
                             <div class="col">
 

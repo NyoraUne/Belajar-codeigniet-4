@@ -58,13 +58,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa-sharp fa-solid fa-boxes-packing"></i>
-                    <span>Barang Dan Jasa</span>
+                    <span>Data Kebutuhan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Data Barang Dan Jasa:</h6>
                         <a class="collapse-item" href="<?= base_url('admin/databarang') ?>">Data Barang</a>
-                        <a class="collapse-item" href="cards.html">Data Jasa</a>
+                        <a class="collapse-item" href="<?= base_url('costumer/index') ?>">Data Costumer</a>
+                        <a class="collapse-item" href="cards.html">Data Service</a>
                     </div>
                 </div>
             </li>
