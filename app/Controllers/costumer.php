@@ -53,6 +53,13 @@ class costumer extends BaseController
             'role' => 4
         ];
         $modcst->save($save);
-        return redirect()->to('/admin/databarang');
+        return redirect()->to('/costumer/index');
+    }
+    public function hapuscst($id_costumer)
+    {
+        $modcst = new modcst();
+
+        $modcst->delete($id_costumer);
+        return redirect()->to('/costumer/index');
     }
 }

@@ -16,7 +16,7 @@
                                 <th>No Telphone</th>
                                 <th>Alamat</th>
                                 <th>Status</th>
-                                <th>Tgl Bergabung</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,7 +28,10 @@
                                     <td><?= $cst->no_telp; ?></td>
                                     <td><?= $cst->alamat; ?></td>
                                     <td><?= $cst->nama; ?></td>
-                                    <td><?= $cst->create_at; ?></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit">Ubah</button>
+                                        <a class="btn btn-danger btn-sm" href="<?php echo base_url('/costumer/hapuscst/' . $cst->id_costumer); ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -39,7 +42,7 @@
                                 <th>No Telphone</th>
                                 <th>Alamat</th>
                                 <th>Status</th>
-                                <th>Tgl Bergabung</th>
+                                <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>
