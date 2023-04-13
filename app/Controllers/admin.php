@@ -54,36 +54,49 @@ class admin extends BaseController
         echo view('admin/barang', $data);
         echo view('admin/foot');
     }
+    public function editbar()
+    {
+        $datbar = new modbarang();
+
+        $save = [
+            'nama_barang' => $this->request->getVar('nama_barang'),
+            'harga' => $this->request->getVar('harga'),
+            'kategori' => $this->request->getVar('kategori')
+        ];
+        $datbar->update($this->request->getVar('id_barang_jasa'), $save);
+        return redirect()->to('/admin/databarang');
+    }
+
     public function tbhbarang()
     {
         $datbar = new modbarang();
         //tangkap data dari form 
         $data = $this->request->getPost();
 
+        //jalankan validasi
+        $this->validation->run($data, 'tbhdata');
 
+        //cek errornya
+        $errors = $this->validation->getErrors();
+
+        //jika ada error kembalikan ke halaman register
+        if ($errors) {
+            session()->setFlashdata('error', $errors);
+            return redirect()->to('/admin/databarang');
+        }
 
         $save = [
-            'id_barang' => $this->request->getVar('id_barang'),
             'nama_barang' => $this->request->getVar('nama_barang'),
             'harga' => $this->request->getVar('harga'),
             'kategori' => $this->request->getVar('kategori')
         ];
-        if ($this->request->getVar('id_barang') == 0) {
-            //jalankan validasi
-            $this->validation->run($data, 'tbhdata');
-
-            //cek errornya
-            $errors = $this->validation->getErrors();
-
-            //jika ada error kembalikan ke halaman register
-            if ($errors) {
-                session()->setFlashdata('error', $errors);
-                return redirect()->to('/admin/databarang');
-            }
-            $datbar->save($save);
-            return redirect()->to('/admin/databarang');
-        }
-        $datbar->update($this->request->getVar('id_barang'), $save);
+        $datbar->save($save);
+        return redirect()->to('/admin/databarang');
+    }
+    public function hapusbarang($id_barang)
+    {
+        $datbar = new modbarang();
+        $datbar->delete($id_barang);
         return redirect()->to('/admin/databarang');
     }
 }

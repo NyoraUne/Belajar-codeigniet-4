@@ -88,4 +88,25 @@ class Validation extends BaseConfig
             ]
         ],
     ];
+    public $upddata = [
+        'kategori' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Kategori Barang Harus Di Isi',
+            ]
+        ],
+        'nama_barang' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Nama Barang Harus Di Isi',
+            ]
+        ],
+        'harga' => [
+            'rules' => 'required|integer',
+            'errors' => [
+                'required' => 'Harga Barang Harus Di Isi',
+                'integer' => 'Harga Barang Harus Angka'
+            ]
+        ],
+    ];
 }
