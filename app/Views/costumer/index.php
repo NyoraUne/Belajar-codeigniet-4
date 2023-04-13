@@ -5,7 +5,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
-                    Featured
+                    Table Costumer
                 </div>
                 <div class="card-body">
                     <table id="example" class="display" style="width:100%">
@@ -109,7 +109,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Featured
+                    Tambah Data Costumer
                 </div>
                 <form method="post" action="tbhwcst">
                     <div class="card-body">
