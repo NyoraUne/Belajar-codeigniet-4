@@ -62,4 +62,17 @@ class costumer extends BaseController
         $modcst->delete($id_costumer);
         return redirect()->to('/costumer/index');
     }
+    public function editcst()
+    {
+        $modcst = new modcst();
+
+        $save = [
+            'nama_costumer' => $this->request->getVar('nama_costumer'),
+            'no_telp' => $this->request->getVar('no_telp'),
+            'alamat' => $this->request->getVar('alamat'),
+            'role' => 4
+        ];
+        $modcst->update($this->request->getVar('id_costumer'), $save);
+        return redirect()->to('/costumer/index');
+    }
 }
