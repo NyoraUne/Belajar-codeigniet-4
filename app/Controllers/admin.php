@@ -72,11 +72,12 @@ class admin extends BaseController
             return redirect()->to('/admin/databarang');
         }
 
-        //simpan ke database
-        $this->$datbar->save([
-            'nama' => $this->request->getVar('email'),
-            'email' => $this->request->getVar('email'),
-            'password' => $this->request->getVar('email'),
-        ]);
+        $save = [
+            'nama_barang' => $this->request->getVar('nama_barang'),
+            'harga' => $this->request->getVar('harga'),
+            'kategori' => $this->request->getVar('kategori')
+        ];
+        $datbar->save($save);
+        return redirect()->to('/admin/databarang');
     }
 }

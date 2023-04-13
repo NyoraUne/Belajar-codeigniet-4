@@ -70,11 +70,11 @@ class Validation extends BaseConfig
         'kategori' => [
             'rules' => 'required',
             'errors' => [
-                'required' => 'Stok Barang Harus Di Isi',
+                'required' => 'Kategori Barang Harus Di Isi',
             ]
         ],
-        'nama' => [
-            'rules' => 'required|is_unique[tbarang.nama_barang]',
+        'nama_barang' => [
+            'rules' => 'required|is_unique[barang_jasa.nama_barang]',
             'errors' => [
                 'required' => 'Nama Barang Harus Di Isi',
                 'is_unique' => 'Nama Barang Sudah Ada'
@@ -84,7 +84,7 @@ class Validation extends BaseConfig
             'rules' => 'required|integer',
             'errors' => [
                 'required' => 'Harga Barang Harus Di Isi',
-                'integer' => 'Harga Barang Harus Numerik'
+                'integer' => 'Harga Barang Harus Angka'
             ]
         ],
     ];

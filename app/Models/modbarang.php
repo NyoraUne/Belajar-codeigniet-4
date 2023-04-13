@@ -8,7 +8,7 @@ class modbarang extends Model
 {
     protected $table = "barang_jasa";
     protected $primaryKey = "id_barang_jasa";
-    protected $allowedFields = ["kategori", "nama", "harga", "gambar", "create_at", "update_at"];
+    protected $allowedFields = ["kategori", "nama_barang", "harga", "gambar", "create_at", "update_at"];
     // date time
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
