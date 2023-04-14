@@ -19,6 +19,7 @@ class modservice extends Model
         "id_teknisi",
         "problem_service",
         "catatan_service",
+        "serial_unit",
         "kelengkapan_service",
         "id_status_service",
     ];

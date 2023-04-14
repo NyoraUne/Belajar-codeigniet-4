@@ -3,6 +3,10 @@
         background-color: brown;
         color: #FFF;
     }
+
+    .row-bottom-margin {
+        margin-bottom: -10px;
+    }
 </style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -13,7 +17,7 @@
         </div>
         <form action="tbhservice" method="post">
             <!-- row 1 Start -->
-            <div class="row ml-1 mr-1 mt-2 mb-2">
+            <div class="row ml-1 mr-1 mt-2 row-bottom-margin">
                 <div class="col">
                     <div class="row">
                         <div class="col">
@@ -22,12 +26,12 @@
                                 <div class="input-group mb-3">
                                     <input type="text" id="id_costumer" name="id_costumer" class="form-control" readonly>
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModal">Pilih User</button>
+                                        <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#costumermodal">Pilih User</button>
                                     </div>
                                 </div>
                             </div>
                             <!-- modal pilih costumer start -->
-                            <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="costumermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -137,7 +141,7 @@
             </div>
             <!-- row 1 end -->
             <!-- row 2 Start -->
-            <div class="row ml-1 mr-1 mt-2 mb-2">
+            <div class="row ml-1 mr-1 mt-2 row-bottom-margin">
                 <div class="col">
                     <div class="row">
                         <div class="col">
@@ -196,8 +200,8 @@
                 </div>
             </div>
             <!-- row 2 end -->
-            <!-- row 1 Start -->
-            <div class="row ml-1 mr-1 mt-2 mb-2">
+            <!-- row 3 Start -->
+            <div class="row ml-1 mr-1 mt-2 row-bottom-margin">
                 <div class="col">
                     <div class="row">
                         <div class="col">
@@ -235,7 +239,7 @@
                     </div>
                 </div>
             </div>
-            <!-- row 1 end -->
+            <!-- row 3 end -->
             <ul class="">
                 <button type="submit" class="btn btn-primary btn-lg ml-1 mr-3 mb-3 float-right">Simpan</button>
                 <button type="reset" class="btn btn-primary btn-lg ml-3 mr-0 mb-3 float-right">Reset</button>
@@ -249,7 +253,7 @@
             Table Service
         </div>
         <!-- isi card start -->
-        <div class="row mt-2 mb-2 ml-2 mr-2">
+        <div class="row mt-2 ml-2 mr-2 row-bottom-margin">
             <div class="col">
                 <table id="service" class="display" style="width:100%">
                     <thead>
@@ -278,7 +282,7 @@
                             }
                             ?>
                             <tr>
-                                <td align="right" class="<?= $i; ?>"><?= $sv->id_service; ?></td>
+                                <td align="right" class="<?= $i; ?>">SV <?= $sv->id_service; ?></td>
                                 <td class="<?= $i; ?>"><?= $sv->nama_costumer; ?></td>
                                 <td class="<?= $i; ?>"><?= $sv->no_telp; ?></td>
                                 <td class="<?= $i; ?>"><?= $sv->nama_unit; ?></td>
@@ -286,10 +290,177 @@
                                 <td class="<?= $i; ?>"><?= $sv->nama_teknisi; ?></td>
                                 <td class="<?= $i; ?>"><?= $sv->nama_status; ?></td>
                                 <td>
-                                    <button type="button" class="<?= $i; ?> btn btn-outline-info btn-sm">Detail</button>
+                                    <button type="button" class="<?= $i; ?> btn btn-outline-info btn-sm" data-toggle="modal" data-target="#detailmod<?= $sv->id_service; ?>">Detail</button>
                                     <!-- <button type="button" class="btn btn-primary btn-sm">Small button</button> -->
                                 </td>
                             </tr>
+
+                            <!-- modal detail start -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="detailmod<?= $sv->id_service; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ID Service "<?= $sv->id_service; ?>"</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- isi modal start -->
+                                            <form action="" method="post">
+                                                <!-- Row 1     -->
+                                                <div class="row row-bottom-margin">
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">ID Costumer</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->id_costumer; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Nama Costumer</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->nama_costumer; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">No Telp</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->no_telp; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Tgl Di Terima</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->tgl_terima; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- row 1 end -->
+                                                <!-- Row 2     -->
+                                                <div class="row row-bottom-margin">
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Nama Unit</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->nama_unit; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Serial Number</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->serial_unit; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Type Unit</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->type_unit; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Tgl Di kembalikan</label>
+                                                            <input type="date" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- row 2 end -->
+                                                <!-- row 3 Start -->
+                                                <div class="row row-bottom-margin">
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Problem</label>
+                                                            <textarea class="form-control" id="problem_service" name="problem_service" rows="3" readonly><?= $sv->problem_service; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Catatan</label>
+                                                            <textarea class="form-control" id="problem_service" name="problem_service" rows="3" readonly><?= $sv->catatan_service; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Kelengkapan</label>
+                                                            <textarea class="form-control" id="problem_service" name="problem_service" rows="3" readonly><?= $sv->kelengkapan_service; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Solusi</label>
+                                                            <textarea class="form-control" id="problem_service" name="problem_service" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- row 3 end -->
+                                                <!-- Row 4     -->
+                                                <div class="row row-bottom-margin">
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Status</label>
+                                                            <input type="Text" class="form-control <?= $i; ?>" value="<?= $sv->nama_status; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Admin Penerim</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->nama_admin; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Teknisi Penanggung Jawab</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->nama_teknisi; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Admin Pengembalian Service</label>
+                                                            <input name="id_admin" id="id_admin" type="Text" class="form-control input-sm" value="<?php echo $session->get('id_staf') ?>" hidden>
+                                                            <input name="id_adminfake" id="id_adminfake" type="Text" class="form-control input-sm" value="<?php echo $session->get('nama') ?>" placeholder="" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- row 4 end -->
+                                                <!-- Row 1     -->
+                                                <div class="row row-bottom-margin">
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Nota</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->id_costumer; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Uang Di Terima</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->nama_costumer; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Uang Kembalian</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->no_telp; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3 input-group-sm">
+                                                            <label class="form-label mb-0">Total Biaya</label>
+                                                            <input type="Text" class="form-control" value="<?= $sv->tgl_terima; ?>" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- row 1 end -->
+                                            </form>
+                                            <!-- isi modal end -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal detail end -->
                         <?php endforeach; ?>
                     </tbody>
                     <tfoot>
