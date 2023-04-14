@@ -5,6 +5,7 @@ namespace App\Controllers;
 use app\Models\modcst;
 use app\Models\modservice;
 use app\Models\modstaf;
+use app\Models\modtypeunit;
 
 class Service extends BaseController
 {
@@ -12,10 +13,12 @@ class Service extends BaseController
     protected $session;
     protected $modservice;
     protected $modstaf;
+    protected $modtypeunit;
 
     public function __construct()
     {
 
+        $this->modtypeunit = model(modtypeunit::class);
         $this->modstaf = model(modstaf::class);
         $this->modservice = model(modservice::class);
         $this->modcst = model(modcst::class);
@@ -30,9 +33,18 @@ class Service extends BaseController
         $modcst = new modcst();
         $datacst = $modcst->getAll();
 
+        $modtypeunit = new modtypeunit();
+        $typeunit = $modtypeunit->findAll();
+
+        $modservice = new modservice();
+        $service = $modservice->getAll();
+        // dd($service);
+
         $data = [
             'costumer' => $datacst,
             'teknisi' => $teknisi,
+            'typeunit' => $typeunit,
+            'service' => $service,
         ];
         echo view('admin/head');
         echo view('service/index', $data);
@@ -66,13 +78,10 @@ class Service extends BaseController
             'problem_service' => $this->request->getVar('problem_service'),
             'catatan_service' => $this->request->getVar('catatan_service'),
             'kelengkapan_service' => $this->request->getVar('kelengkapan_service'),
-            'id_status' => 1,
+            'id_status_service' => 1,
         ];
-        dd($save);
-
-
-
+        // dd($save);
         $modservice->save($save);
-        return redirect()->to('/costumer/index');
+        return redirect()->to('/service/index');
     }
 }

@@ -145,9 +145,9 @@
                                 <label class="mb-0" for="exampleInputPassword1">Type Unit</label>
                                 <div class="input-group mb-3">
                                     <select class="custom-select" id="id_type_unit" name="id_type_unit">
-                                        <option selected>Laptop</option>
-                                        <option value="1">Handphone</option>
-                                        <option value="2">Other</option>
+                                        <?php foreach ($typeunit as $tu) : ?>
+                                            <option value="<?= $tu['id_type_unit']; ?>"><?= $tu['type_unit']; ?></option>
+                                        <?php endforeach ?>
                                     </select>
                                 </div>
                             </div>
@@ -254,31 +254,53 @@
                 <table id="service" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID Service</th>
+                            <th>Nama Cst</th>
+                            <th>No Telp</th>
+                            <th>Nama Unit</th>
+                            <th>Admin</th>
+                            <th>Teknisi</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011-01-25</td>
-                            <td>$112,000</td>
-                        </tr>
+                        <?php foreach ($service as $sv) : ?>
+                            <?php $i = 0;
+                            if ($sv->id_status_service == 1) {
+                                $i = 'text-primary';
+                            } else if ($sv->id_status_service == 2) {
+                                $i = 'text-warning';
+                            } else if ($sv->id_status_service == 3) {
+                                $i = 'text-success';
+                            } else if ($sv->id_status_service == 4) {
+                                $i = 'text-danger';
+                            }
+                            ?>
+                            <tr>
+                                <td align="right" class="<?= $i; ?>"><?= $sv->id_service; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_costumer; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->no_telp; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_unit; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_admin; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_teknisi; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_status; ?></td>
+                                <td>
+                                    <button type="button" class="<?= $i; ?> btn btn-outline-info btn-sm">Detail</button>
+                                    <!-- <button type="button" class="btn btn-primary btn-sm">Small button</button> -->
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
+                            <th>ID Service</th>
+                            <th>Nama Cst</th>
+                            <th>No Telp</th>
+                            <th>Nama Unit</th>
+                            <th>Admin</th>
+                            <th>Teknisi</th>
+                            <th>Status</th>
                             <th>Salary</th>
                         </tr>
                     </tfoot>
