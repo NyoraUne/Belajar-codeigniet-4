@@ -1,3 +1,9 @@
+<style type="text/css">
+    .selected {
+        background-color: brown;
+        color: #FFF;
+    }
+</style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- card form input data start -->
@@ -5,7 +11,7 @@
         <div class="card-header">
             Penerimaan Service
         </div>
-        <form action="" method="post">
+        <form action="tbhservice" method="post">
             <!-- row 1 Start -->
             <div class="row ml-1 mr-1 mt-2 mb-2">
                 <div class="col">
@@ -14,7 +20,7 @@
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputEmail1">ID User</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" readonly>
+                                    <input type="text" id="id_costumer" name="id_costumer" class="form-control" readonly>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModal">Pilih User</button>
                                     </div>
@@ -65,13 +71,39 @@
                                                 $(document).ready(function() {
                                                     $('#costumer').DataTable();
                                                 });
+
+
+                                                var table = document.getElementById('costumer');
+
+                                                for (var i = 1; i < table.rows.length; i++) {
+                                                    table.rows[i].onclick = function() {
+                                                        //rIndex = this.rowIndex;
+                                                        document.getElementById("id_costumer").value = this.cells[0].innerHTML;
+                                                        document.getElementById("nama_costumer").value = this.cells[1].innerHTML;
+                                                        document.getElementById("no_telp").value = this.cells[2].innerHTML;
+                                                    };
+                                                }
+
+                                                var table = document.getElementById('costumer');
+                                                var selected = table.getElementsByClassName('selected');
+                                                table.onclick = highlight;
+
+                                                function highlight(e) {
+                                                    if (selected[0]) selected[0].className = '';
+                                                    e.target.parentNode.className = 'selected';
+                                                }
+
+                                                function fnselect() {
+                                                    var element = document.querySelectorAll('.selected');
+                                                    if (element[0] !== undefined) { //it must be selected
+                                                    }
+                                                }
                                             </script>
                                             <!-- script data tables end-->
                                             <!-- isi modal, tabel costumer -->
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
@@ -81,7 +113,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Nama User</label>
-                                <input type="text" class="form-control input-sm" readonly>
+                                <input id="nama_costumer" type="text" class="form-control input-sm" readonly>
                             </div>
                         </div>
                     </div>
@@ -91,13 +123,13 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">No Telp</label>
-                                <input type="text" class="form-control input-sm" readonly>
+                                <input id="no_telp" type="text" class="form-control input-sm" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Tgl Terima</label>
-                                <input type="date" class="form-control input-sm">
+                                <input id="tgl_terima" name="tgl_terima" type="date" class="form-control input-sm">
                             </div>
                         </div>
                     </div>
@@ -112,7 +144,7 @@
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Type Unit</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" id="inputGroupSelect01">
+                                    <select class="custom-select" id="id_type_unit" name="id_type_unit">
                                         <option selected>Laptop</option>
                                         <option value="1">Handphone</option>
                                         <option value="2">Other</option>
@@ -123,7 +155,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Nama Unit</label>
-                                <input type="Text" class="form-control input-sm">
+                                <input id="nama_unit" name="nama_unit" type="Text" class="form-control input-sm">
                             </div>
                         </div>
                     </div>
@@ -133,7 +165,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Serial Number</label>
-                                <input type="Text" class="form-control input-sm">
+                                <input id="serial_unit" name="serial_unit" type="Text" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="col">
@@ -141,17 +173,19 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="mb-0" for="exampleInputPassword1">Admin</label>
-                                        <input type="Text" class="form-control input-sm" readonly>
+                                        <?php $session = session() ?>
+                                        <input name="id_admin" id="id_admin" type="Text" class="form-control input-sm" value="<?php echo $session->get('id_staf') ?>" hidden>
+                                        <input name="id_adminfake" id="id_adminfake" type="Text" class="form-control input-sm" value="<?php echo $session->get('nama') ?>" placeholder="" readonly>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label class="mb-0" for="exampleInputPassword1">Teknisi</label>
                                         <div class="input-group mb-3">
-                                            <select class="custom-select" id="inputGroupSelect01">
-                                                <option selected>Laptop</option>
-                                                <option value="1">Handphone</option>
-                                                <option value="2">Other</option>
+                                            <select class="custom-select" id="id_teknisi" name="id_teknisi">
+                                                <?php foreach ($teknisi as $tech) : ?>
+                                                    <option value="<?= $tech['id_staf']; ?>"><?= $tech['nama']; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -170,7 +204,7 @@
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputEmail1">Problem</label>
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="problem_service" name="problem_service" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +212,7 @@
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputEmail1">Catatan</label>
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="catatan_service" name="catatan_service" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +224,7 @@
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputEmail1">Kelengkapan</label>
                                 <div class="input-group mb-3">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="kelengkapan_service" name="kelengkapan_service" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +237,8 @@
             </div>
             <!-- row 1 end -->
             <ul class="">
-                <button type="button" class="btn btn-primary btn-lg ml-3 mr-3 mb-3 float-right">Simpan</button>
+                <button type="submit" class="btn btn-primary btn-lg ml-1 mr-3 mb-3 float-right">Simpan</button>
+                <button type="reset" class="btn btn-primary btn-lg ml-3 mr-0 mb-3 float-right">Reset</button>
             </ul>
         </form>
     </div>

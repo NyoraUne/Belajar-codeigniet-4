@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class modservice extends Model
 {
-    protected $table = "costumer";
-    protected $primaryKey = "id_costumer";
+    protected $table = "service";
+    protected $primaryKey = "id_service";
     protected $allowedFields = [
         "id_service",
         "id_costumer",
@@ -23,7 +23,7 @@ class modservice extends Model
     ];
 
     // date time
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'create_at';
     protected $updatedField  = '';
@@ -31,8 +31,11 @@ class modservice extends Model
 
     public function getAll()
     {
-        $builder = $this->db->table('Costumer');
-        $builder->join('role', 'role.id_role = costumer.role');
+        $builder = $this->db->table('service');
+        $builder->join('costumer', 'role.id_costumer = service.id_costumer');
+        $builder->join('staf', 'staf.id_staf = service.id_admin');
+        $builder->join('staf', 'staf.id_staf = service.id_teknisi');
+        $builder->join('type_unit', 'type_unit.id_type_unit = service.id_type_unit');
         $query = $builder->get();
         $builder->select('*');
         return $query->getResult();
