@@ -119,7 +119,12 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Nama User</label>
-                                <input id="nama_costumer" type="text" class="form-control input-sm" readonly>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                                    </div>
+                                    <input id="nama_costumer" type="text" class="form-control input-sm" readonly>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,16 +134,24 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">No Telp</label>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-phone"></i></span>
+                                    </div>
+                                    <input id="no_telp" type="text" class="form-control input-sm" readonly>
                                 </div>
-                                <input id="no_telp" type="text" class="form-control input-sm" readonly>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Tgl Terima</label>
-                                <input id="tgl_terima" name="tgl_terima" type="date" class="form-control input-sm">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-calendar-days"></i></i></span>
+                                    </div>
+                                    <input id="tgl_terima" name="tgl_terima" type="datetime" class="form-control input-sm">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,18 +166,43 @@
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Type Unit</label>
                                 <div class="input-group mb-3">
-                                    <select class="custom-select" id="id_type_unit" name="id_type_unit">
-                                        <?php foreach ($typeunit as $tu) : ?>
-                                            <option value="<?= $tu['id_type_unit']; ?>"><?= $tu['type_unit']; ?></option>
-                                        <?php endforeach ?>
-                                    </select>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i id="typeunit" class="fa-solid fa-laptop"></i></span>
+                                        </div>
+                                        <select class="custom-select" id="id_type_unit" name="id_type_unit">
+                                            <?php foreach ($typeunit as $tu) : ?>
+                                                <option value="<?= $tu['id_type_unit']; ?>"><?= $tu['type_unit']; ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
+                            <script>
+                                var select = document.getElementById('id_type_unit');
+                                var icon = document.getElementById('typeunit');
+
+                                select.addEventListener('change', function() {
+                                    if (select.value == '1') {
+                                        icon.className = 'fa-solid fa-laptop';
+                                    } else if (select.value == '2') {
+                                        icon.className = 'fa-solid fa-mobile-android';
+                                    } else {
+                                        icon.className = 'fa-solid fa-question';
+                                    }
+                                });
+                            </script>
+
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Nama Unit</label>
-                                <input id="nama_unit" name="nama_unit" type="Text" class="form-control input-sm">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-laptop-medical"></i></span>
+                                    </div>
+                                    <input id="nama_unit" name="nama_unit" type="Text" class="form-control input-sm">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -174,7 +212,12 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="mb-0" for="exampleInputPassword1">Serial Number</label>
-                                <input id="serial_unit" name="serial_unit" type="Text" class="form-control input-sm">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-list-ol"></i></span>
+                                    </div>
+                                    <input id="serial_unit" name="serial_unit" type="Text" class="form-control input-sm">
+                                </div>
                             </div>
                         </div>
                         <div class="col">
@@ -247,6 +290,9 @@
                             </div>
                         </div>
                         <div class="col">
+                            <br>
+                            <button type="submit" class="btn btn-primary mb-4" style="width: 100%;">Simpan</button><br>
+                            <button type="reset" class="btn btn-primary" style="width: 100%; position: relative; bottom: 0px;">Reset</button>
 
 
                         </div>
@@ -255,8 +301,6 @@
             </div>
             <!-- row 3 end -->
             <ul class="">
-                <button type="submit" class="btn btn-primary btn-lg ml-1 mr-3 mb-3 float-right">Simpan</button>
-                <button type="reset" class="btn btn-primary btn-lg ml-3 mr-0 mb-3 float-right">Reset</button>
             </ul>
         </form>
     </div>
