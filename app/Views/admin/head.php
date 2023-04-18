@@ -70,7 +70,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item" href="<?= base_url('service/index') ?>">Terima Service</a>
-                        <a class="collapse-item" href="utilities-border.html">Penjualan</a>
+                        <a class="collapse-item" href="<?= base_url('penjualan/index') ?>">Penjualan</a>
                     </div>
                 </div>
             </li>

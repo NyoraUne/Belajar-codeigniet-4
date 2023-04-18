@@ -291,8 +291,8 @@
                         </div>
                         <div class="col">
                             <br>
-                            <button type="submit" class="btn btn-primary mb-4" style="width: 100%;">Simpan</button><br>
-                            <button type="reset" class="btn btn-primary" style="width: 100%; position: relative; bottom: 0px;">Reset</button>
+                            <button type="submit" class="btn btn-outline-dark mb-4" style="width: 100%;">Simpan</button><br>
+                            <button type="reset" class="btn btn-outline-dark" style="width: 100%; position: relative; bottom: 0px;">Reset</button>
 
 
                         </div>
