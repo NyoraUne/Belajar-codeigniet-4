@@ -18,7 +18,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">ID_</span>
                                 </div>
-                                <input type="text" class="form-control" data-toggle="tooltip" data-placement="top" title="Biarkan Kosong Jika Tidak Ada Service" readonly>
+                                <input type="text" id="id_service" class="form-control" data-toggle="tooltip" data-placement="top" title="Biarkan Kosong Jika Tidak Ada Service" readonly>
                                 <div class="input-group-prepend">
                                     <button type="button" class="btn btn-outline-secondary" onclick="$('#tambahnota').modal('hide');$('#piliservice').modal('show'); "><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </div>
@@ -30,7 +30,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-id-card"></i></span>
                                 </div>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" class="form-control" id="id_cst" readonly>
                                 <div class="input-group-prepend">
                                     <button type="button" class="btn btn-outline-secondary" onclick="$('#tambahnota').modal('hide');$('#pilihcst').modal('show'); "><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </div>
@@ -50,13 +50,13 @@
                     <h5 class="card-title mb-0 mt-3 font-weight-bold">Note</h5>
                     <p class="card-text">Kosongkan Kolom Service Jika Tidak Memiliki Service.</p>
 
-                </form>
-                <!-- isi modal -->
+                    <!-- isi modal -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="reset" class="btn btn-secondary" onclick="$('#tambahnota').modal('hide'); ">Batal</button>
+                <button type="submit" class="btn btn-primary">Buat Nota</button>
             </div>
+            </form>
         </div>
     </div>
 </div>

@@ -8,11 +8,42 @@
                 </button>
             </div>
             <div class="modal-body">
-                pilih nota
+                <table id="table" class="table table-striped table-hover table-sm" style="width:100%">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID service</th>
+                            <th>Nama</th>
+                            <th>Unit</th>
+                            <th>Serial</th>
+                            <th>Problem</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <th>ID service</th>
+                            <th>Nama</th>
+                            <th>Unit</th>
+                            <th>Serial</th>
+                            <th>Problem</th>
+                            <th>Status</th>
+                        </tr>
+                    <tfoot class="thead-dark">
+                        <tr>
+                            <th>ID service</th>
+                            <th>Nama</th>
+                            <th>Unit</th>
+                            <th>Serial</th>
+                            <th>Problem</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="$('#tambahnota').modal('show');$('#pilihnota').modal('hide'); ">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="$('#pilihnota').modal('hide'); ">Pilih Nota</button>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="table" class="table table-striped table-hover table-sm" style="width:100%">
+                <table id="table" class="table table-striped table-hover table-sm tb-cst" style="width:100%">
                     <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
@@ -47,3 +47,14 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.tb-cst').DataTable();
+        $('.tb-cst tbody tr').click(function() {
+            var row = $(this).closest('tr');
+            $('#id_cst').val(row.find('td:eq(0)').text());
+            $('.tb-cst tbody tr').removeClass('table-primary');
+            $(this).addClass('table-primary');
+        });
+    });
+</script>

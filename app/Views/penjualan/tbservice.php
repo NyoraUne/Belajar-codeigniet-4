@@ -2,49 +2,73 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Table Service</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <table id="table" class="table table-striped table-hover table-sm" style="width:100%">
+                <table id="table" class="table table-striped table-hover table-sm tb-service" style="width:100%">
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
+                            <th>ID service</th>
                             <th>Nama</th>
-                            <th>No Telp </th>
-                            <th>Status </th>
-                            <th>Alamat</th>
+                            <th>Unit</th>
+                            <th>Serial</th>
+                            <th>Problem</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $nocst = 1; ?>
-                        <?php foreach ($cst as $cs) : ?>
+                        <?php foreach ($service as $sv) : ?>
+                            <?php $i = 0;
+                            if ($sv->id_status_service == 1) {
+                                $i = 'text-primary';
+                            } else if ($sv->id_status_service == 2) {
+                                $i = 'text-warning';
+                            } else if ($sv->id_status_service == 3) {
+                                $i = 'text-success';
+                            } else if ($sv->id_status_service == 4) {
+                                $i = 'text-danger';
+                            }
+                            ?>
                             <tr>
-                                <td style="width: 10px;"><?= $cs->id_costumer; ?></td>
-                                <td><?= $cs->nama_costumer; ?></td>
-                                <td><?= $cs->no_telp; ?></td>
-                                <td><?= $cs->nama; ?></td>
-                                <td><?= substr($cs->alamat, 0, 10) . (strlen($cs->alamat) > 10 ? '...' : '') ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->id_service; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_costumer; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_unit; ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->serial_unit; ?></td>
+                                <td class="<?= $i; ?>"><?= substr($sv->problem_service, 0, 10) . (strlen($sv->problem_service) > 10 ? '...' : '') ?></td>
+                                <td class="<?= $i; ?>"><?= $sv->nama_status; ?></td>
                             </tr>
                         <?php endforeach ?>
-                    </tbody>
                     <tfoot class="thead-dark">
                         <tr>
-                            <th>ID</th>
+                            <th>ID service</th>
                             <th>Nama</th>
-                            <th>No Telp </th>
-                            <th>Status </th>
-                            <th>Alamat</th>
+                            <th>Unit</th>
+                            <th>Serial</th>
+                            <th>Problem</th>
+                            <th>Status</th>
                         </tr>
                     </tfoot>
+                    </tbody>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="$('#tambahnota').modal('show');$('#piliservice').modal('hide'); ">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="$('#tambahnota').modal('show');$('#piliservice').modal('hide'); ">Pilih Data</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.tb-service').DataTable();
+        $('.tb-service tbody tr').click(function() {
+            var row = $(this).closest('tr');
+            $('#id_service').val(row.find('td:eq(0)').text());
+            $('.tb-service tbody tr').removeClass('table-primary');
+            $(this).addClass('table-primary');
+        });
+    });
+</script>
