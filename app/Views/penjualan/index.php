@@ -75,20 +75,94 @@
                                         <div class="input-group mb-2 ">
                                             <input type="text" class="form-control">
                                             <div class="input-group-prepend">
-                                                <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#pilihnota"><i class="fa-solid fa-magnifying-glass"></i></button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <br>
-                                        <button type="button" class="btn btn-dark btn-block">Nota Baru</button>
-
+                                        <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#tambahnota">Nota Baru</button>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
+                    <!-- isi modal pilih nota start -->
+                    <div class="modal fade" id="pilihnota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" onclick="$('#tambahnota').modal('show');$('#pilihnota').modal('hide'); ">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- isi modal pilih service -->
+                    <?= $this->include('penjualan/tbservice'); ?>
+                    <!-- isi modal pilih cst -->
+                    <div class="modal fade" id="pilihcst" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Table costumer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table id="table" class="table table-striped table-hover table-sm" style="width:100%">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nama</th>
+                                                <th>No Telp </th>
+                                                <th>Status </th>
+                                                <th>Alamat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $nocst = 1; ?>
+                                            <?php foreach ($cst as $cs) : ?>
+                                                <tr>
+                                                    <td style="width: 10px;"><?= $cs->id_costumer; ?></td>
+                                                    <td><?= $cs->nama_costumer; ?></td>
+                                                    <td><?= $cs->no_telp; ?></td>
+                                                    <td><?= $cs->nama; ?></td>
+                                                    <td><?= substr($cs->alamat, 0, 10) . (strlen($cs->alamat) > 10 ? '...' : '') ?></td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                        <tfoot class="thead-dark">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nama</th>
+                                                <th>No Telp </th>
+                                                <th>Status </th>
+                                                <th>Alamat</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="$('#tambahnota').modal('show');$('#pilihcst').modal('hide'); ">Pilih Data</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- isi modal tambah nota start -->
+                    <?= $this->include('penjualan/tbhnota'); ?>
+                    <!-- isi modal end-->
+
                     <div class="card mt-2">
                         <div class="card-body">
                             This is some text within a card body.
@@ -144,21 +218,6 @@
                 </div>
 
             </div>
-            <!-- row 3 -->
-            <!-- <div class="row">
-                <div class="col">
-                    1
-                </div>
-                <div class="col">
-                    2
-                </div>
-                <div class="col">
-                    3
-                </div>
-                <div class="col">
-                    4
-                </div>
-            </div> -->
         </div>
         <!-- isi card end-->
         </ul>
@@ -166,11 +225,13 @@
     <!-- card end -->
 </div>
 <!-- /.container-fluid -->
-
 <script>
     // untuk table
     $(document).ready(function() {
         $('#tbbarang').DataTable();
+    });
+    $(document).ready(function() {
+        $('#table').DataTable();
     });
     $(document).ready(function() {
         $('#tbbeli').DataTable();
@@ -204,4 +265,9 @@
     }
 
     setInterval(showTime, 1000);
+
+    //tooltips
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
