@@ -12,6 +12,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>ID service</th>
+                            <th hidden>ID cst</th>
                             <th>Nama</th>
                             <th>Unit</th>
                             <th>Serial</th>
@@ -35,6 +36,7 @@
                             ?>
                             <tr>
                                 <td class="<?= $i; ?>"><?= $sv->id_service; ?></td>
+                                <td hidden><?= $sv->id_costumer; ?></td>
                                 <td class="<?= $i; ?>"><?= $sv->nama_costumer; ?></td>
                                 <td class="<?= $i; ?>"><?= $sv->nama_unit; ?></td>
                                 <td class="<?= $i; ?>"><?= $sv->serial_unit; ?></td>
@@ -42,9 +44,11 @@
                                 <td class="<?= $i; ?>"><?= $sv->nama_status; ?></td>
                             </tr>
                         <?php endforeach ?>
+                    </tbody>
                     <tfoot class="thead-dark">
                         <tr>
                             <th>ID service</th>
+                            <th hidden>ID cst</th>
                             <th>Nama</th>
                             <th>Unit</th>
                             <th>Serial</th>
@@ -52,7 +56,6 @@
                             <th>Status</th>
                         </tr>
                     </tfoot>
-                    </tbody>
                 </table>
             </div>
             <div class="modal-footer">
@@ -66,6 +69,8 @@
         $('.tb-service').DataTable();
         $('.tb-service tbody tr').click(function() {
             var row = $(this).closest('tr');
+            var id_costumer = $(this).find('td:hidden').text();
+            $('#id_cst').val(id_costumer);
             $('#id_service').val(row.find('td:eq(0)').text());
             $('.tb-service tbody tr').removeClass('table-primary');
             $(this).addClass('table-primary');

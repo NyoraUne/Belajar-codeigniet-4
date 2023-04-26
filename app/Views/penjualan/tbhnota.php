@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <!-- isi modal -->
-                <form action="">
+                <form action="simpnota" method="post">
                     <div class="row">
                         <div class="col">
                             <label class="mb-0" for="">ID Service</label>
@@ -18,7 +18,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">ID_</span>
                                 </div>
-                                <input type="text" id="id_service" class="form-control" data-toggle="tooltip" data-placement="top" title="Biarkan Kosong Jika Tidak Ada Service" readonly>
+                                <input name="id_service" type="text" id="id_service" class="form-control" data-toggle="tooltip" data-placement="top" title="Biarkan Kosong Jika Tidak Ada Service" readonly>
                                 <div class="input-group-prepend">
                                     <button type="button" class="btn btn-outline-secondary" onclick="$('#tambahnota').modal('hide');$('#piliservice').modal('show'); "><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </div>
@@ -30,7 +30,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-id-card"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="id_cst" readonly>
+                                <input name="id_costumer" type="text" class="form-control" id="id_cst" readonly>
                                 <div class="input-group-prepend">
                                     <button type="button" class="btn btn-outline-secondary" onclick="$('#tambahnota').modal('hide');$('#pilihcst').modal('show'); "><i class="fa-solid fa-magnifying-glass"></i></button>
                                 </div>
@@ -43,7 +43,7 @@
                                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-id-card"></i></span>
                                 </div>
                                 <input type="text" class="form-control" value="<?php echo $session->get('nama') ?>" readonly>
-                                <input type="text" class="form-control" value="<?php echo $session->get('id_staf') ?>" hidden>
+                                <input type="text" name="id_staff" class="form-control" value="<?php echo $session->get('id_staf') ?>" hidden>
                             </div>
                         </div>
                     </div>

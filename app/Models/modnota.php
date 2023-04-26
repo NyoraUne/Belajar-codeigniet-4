@@ -16,12 +16,24 @@ class modnota extends Model
     protected $updatedField  = '';
     protected $deletedField  = '';
 
+    // public function getAll()
+    // {
+    //     $builder = $this->db->table('nota');
+    //     $builder->join('status_nota', 'status_nota.id_status_nota = nota.id_status_nota');
+    //     $builder->join('costumer', 'costumer.id_costumer = nota.id_costumer');
+    //     $builder->join('service', 'service.id_service = nota.id_service');
+    //     $query = $builder->get();
+    //     $builder->select('*');
+    //     return $query->getResult();
+    // }
     public function getAll()
     {
         $builder = $this->db->table('nota');
-        $builder->join('status_nota', 'status_nota.nama_status_nota = nota.id_status_nota');
+        $builder->join('status_nota', 'status_nota.id_status_nota = nota.id_status_nota');
+        $builder->join('costumer', 'costumer.id_costumer = nota.id_costumer');
+        $builder->join('service', 'service.id_service = nota.id_service', 'left');
+        $builder->select('nota.*, status_nota.nama_status_nota, costumer.nama_costumer, service.nama_unit, service.serial_unit');
         $query = $builder->get();
-        $builder->select('*');
         return $query->getResult();
     }
 }

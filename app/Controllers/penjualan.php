@@ -37,10 +37,12 @@ class penjualan extends BaseController
         $modnota = new modnota();
         $nota = $modnota->getAll();
 
+        // dd($service);
         $data = [
             'listbarang' => $barang,
             'cst' => $cst,
             'service' => $service,
+            'nota' => $nota,
         ];
         // dd($data);
 
@@ -48,8 +50,29 @@ class penjualan extends BaseController
         echo view('penjualan/index', $data);
         echo view('admin/foot');
     }
-    public function tes()
+    public function simpnota()
     {
-        echo view('tes');
+        $modnota = new modnota();
+        $id_service = $this->request->getVar('id_service');
+        if ($id_service == '') {
+            $save = [
+                'id_service' => null,
+                'id_costumer' => $this->request->getVar('id_costumer'),
+                'id_staff' => $this->request->getVar('id_staff'),
+                'id_status_nota' => 1,
+            ];
+        } else {
+            $save = [
+                'id_service' => $id_service,
+                'id_costumer' => $this->request->getVar('id_costumer'),
+                'id_staff' => $this->request->getVar('id_staff'),
+                'id_status_nota' => 1,
+            ];
+        }
+
+        // dd($save);
+        $modnota->set($save)->insert();
+        // $modnota->save($save);
+        return redirect()->to('/penjualan/index');
     }
 }

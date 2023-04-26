@@ -8,38 +8,33 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="table" class="table table-striped table-hover table-sm" style="width:100%">
+                <table id="table" class="table table-striped table-hover table-sm tb-nota" style="width:100%">
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID service</th>
-                            <th>Nama</th>
-                            <th>Unit</th>
-                            <th>Serial</th>
-                            <th>Problem</th>
-                            <th>Status</th>
+                            <th>ID Nota</th>
+                            <th>Nota Tanggal</th>
+                            <th>Nama Costumer</th>
+                            <th>Status Pembayaran</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <th>ID service</th>
-                            <th>Nama</th>
-                            <th>Unit</th>
-                            <th>Serial</th>
-                            <th>Problem</th>
-                            <th>Status</th>
-                        </tr>
+                        <?php foreach ($nota as $not) : ?>
+                            <tr>
+                                <th><?= $not->id_nota; ?></th>
+                                <th><?= $not->create_at; ?></th>
+                                <th><?= $not->nama_costumer; ?></th>
+                                <th><?= $not->nama_status_nota; ?></th>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                     <tfoot class="thead-dark">
                         <tr>
-                            <th>ID service</th>
-                            <th>Nama</th>
-                            <th>Unit</th>
-                            <th>Serial</th>
-                            <th>Problem</th>
-                            <th>Status</th>
+                            <th>ID Nota</th>
+                            <th>Nota Tanggal</th>
+                            <th>Nama Costumer</th>
+                            <th>Status Pembayaran</th>
                         </tr>
                     </tfoot>
-                    </tbody>
                 </table>
             </div>
             <div class="modal-footer">
@@ -48,3 +43,14 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.tb-nota').DataTable();
+        $('.tb-nota tbody tr').click(function() {
+            var row = $(this).closest('tr');
+            $('#id_nota').val(row.find('td:eq(0)').text());
+            $('.tb-nota tbody tr').removeClass('table-primary');
+            $(this).addClass('table-primary');
+        });
+    });
+</script>

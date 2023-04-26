@@ -92,9 +92,6 @@
         $('#tbbarang').DataTable();
     });
     $(document).ready(function() {
-        $('#table').DataTable();
-    });
-    $(document).ready(function() {
         $('#tbbeli').DataTable();
     });
 
