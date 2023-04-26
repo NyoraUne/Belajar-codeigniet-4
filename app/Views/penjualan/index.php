@@ -20,38 +20,8 @@
                 <div class="col">
                     <div class="card" style="width: 800px;">
                         <div class="card-body">
-                            <table id="tbbarang" class="table table-striped table-hover table-sm" style="width:100%">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Barang</th>
-                                        <th>Kategori</th>
-                                        <th>Harga</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1; ?>
-                                    <?php foreach ($listbarang as $a) : ?>
-                                        <tr>
-                                            <td><?= $i++; ?></td>
-                                            <td><?= substr($a->nama_barang, 0, 20) . (strlen($a->nama_barang) > 20 ? '...' : '') ?></td>
-                                            <td><?= $a->nama_kategori; ?></td>
-                                            <td><?= $a->harga; ?></td>
-                                            <td><button type="button" class="btn btn-primary btn-sm mr-2">Detail</button></td>
-                                        </tr>
-                                    <?php endforeach ?>
-                                </tbody>
-                                <tfoot class="thead-dark">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Barang</th>
-                                        <th>Kategori</th>
-                                        <th>Harga</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <!-- table barang -->
+                            <?= $this->include('penjualan/tbbarang'); ?>
                         </div>
                     </div>
                 </div>
@@ -88,77 +58,11 @@
                         </div>
                     </div>
                     <!-- isi modal pilih nota start -->
-                    <div class="modal fade" id="pilihnota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" onclick="$('#tambahnota').modal('show');$('#pilihnota').modal('hide'); ">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?= $this->include('penjualan/tbnota'); ?>
                     <!-- isi modal pilih service -->
                     <?= $this->include('penjualan/tbservice'); ?>
                     <!-- isi modal pilih cst -->
-                    <div class="modal fade" id="pilihcst" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Table costumer</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <table id="table" class="table table-striped table-hover table-sm" style="width:100%">
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nama</th>
-                                                <th>No Telp </th>
-                                                <th>Status </th>
-                                                <th>Alamat</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php $nocst = 1; ?>
-                                            <?php foreach ($cst as $cs) : ?>
-                                                <tr>
-                                                    <td style="width: 10px;"><?= $cs->id_costumer; ?></td>
-                                                    <td><?= $cs->nama_costumer; ?></td>
-                                                    <td><?= $cs->no_telp; ?></td>
-                                                    <td><?= $cs->nama; ?></td>
-                                                    <td><?= substr($cs->alamat, 0, 10) . (strlen($cs->alamat) > 10 ? '...' : '') ?></td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </tbody>
-                                        <tfoot class="thead-dark">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nama</th>
-                                                <th>No Telp </th>
-                                                <th>Status </th>
-                                                <th>Alamat</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="$('#tambahnota').modal('show');$('#pilihcst').modal('hide'); ">Pilih Data</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?= $this->include('penjualan/tbcst'); ?>
                     <!-- isi modal tambah nota start -->
                     <?= $this->include('penjualan/tbhnota'); ?>
                     <!-- isi modal end-->

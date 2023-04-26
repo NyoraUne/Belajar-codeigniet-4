@@ -47,6 +47,9 @@
                             </div>
                         </div>
                     </div>
+                    <h5 class="card-title mb-0 mt-3 font-weight-bold">Note</h5>
+                    <p class="card-text">Kosongkan Kolom Service Jika Tidak Memiliki Service.</p>
+
                 </form>
                 <!-- isi modal -->
             </div>
